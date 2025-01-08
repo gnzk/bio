@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="assets/img/icon.png">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
+  <link href='https://fonts.googleapis.com/css?family=Rajdhani:600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-omErDd1N57CA6wrNf+52Kv1KHLQ07SF/FRb/UKIr6IWwvLepEYmJl3Dl2U1n/vvK" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/typed.js@2.0.132/dist/typed.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/kursor"></script>
+  <script src="https://unpkg.com/kursor"></script>
+  <script src="./assets/js/killfeed.js"></script>
+  <title>gnz - profile card</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #cat {
+      pointer-events: none; /* para que o gato não interfira na interação do mouse */
+      transition: transform 0.1s ease; /* animação suave ao seguir o cursor */
+      display: none; /* inicialmente oculto */
+      position: absolute;
+      width: 50px; /* ajuste a largura conforme necessário */
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+    
+
+    .card-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out;
+      perspective: 1000px;
+    }
+
+    .card {
+      transition: transform 0.1s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="cat" src="./assets/img/cat.png" alt="Gato" style="display:none; position: absolute; width: 50px;"/> <!-- Adicione esta linha para o gato -->
+
+  <div class="kill-feed"><div>
+    <span class="player t"></span>
+    <span class="weapons">
+      <img height="20"/>
+      <img width="30" height="26" src="./assets/img/csgo/headshot.png"/>
+    </span>
+    <span class="player ct"></span></div>
+  </div>
+
+  <video src="assets/img/Moving Clouds Background.mp4" loop muted autoplay></video>
+
+  <button id="audioButton" onclick="toggleAudio()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+      <path fill="none" d="M0 0h24v24H0V0z"/>
+      <path id="playIcon" d="M8 5v14l11-7z"/>
+      <path id="pauseIcon" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+    </svg>
+    <audio id="audioClip" src="assets/audio/24songs.mp3"></audio>
+  </button>
+
+  <div id="volumeSliderContainer">
+    <input type="range" min="0" max="1" step="0.1" value="0.5" id="volumeSlider">
+  </div>
+
+  <div class="slider" style="display: none;">
+    <span>Violent Crimes x Jersey Club</span>
+  </div>
+
+  <div class="card-container">
+    <!-- Profile Card -->
+    <div class="card">
+      <div class="card-header">
+        <div
+          style="background: url('./assets/img/banner.gif')"
+          class="banner-img"
+        ></div>
+      </div>
+      <div class="card-body">
+        <div class="profile-header">
+          <div class="profil-logo">
+            <img src="./assets/img/logo.jpg" />
+          </div>
+          <div class="badges-container">
+            <a href="https://discord.gg/25yNr2FbZc" class="badge-item" target="_blank">
+              <img src="./assets/img/badges/megabughunter.webp" alt="" />
+              <div class="tooltip tooltip-up">Cheat Engine</div>
+            </a>
+            <a href="https://discord.gg/25yNr2FbZc" class="badge-item" target="_blank">
+              <img src="./assets/img/badges/firsttimenitro.webp" alt="" />
+              <div class="tooltip tooltip-up">Cheat Engine</div>
+            </a>
+            <a href="https://discord.gg/25yNr2FbZc" class="badge-item" target="_blank">
+              <img src="./assets/img/badges/nitro.webp" alt="" />
+              <div class="tooltip tooltip-up">Nitro</div>
+            </a>
+            <a href="https://github.com/gnzk" class="badge-item" target="_blank">
+              <img src="./assets/img/badges/github.png" alt="" />
+              <div class="tooltip tooltip-up">Github (this repo)</div>
+            </a>
+            <a href="https://discord.gg/25yNr2FbZc" class="badge-item" target="_blank">
+              <img src="./assets/img/badges/geo.png" alt="" />
+              <div class="tooltip tooltip-up">Reverser Engine</div>
+            </a>
+          </div>
+        </div>
+        <div class="profile-body">
+          <div class="username">gnz<span>#031</span></div>
+          <hr >
+          <div class="basic-infos">
+            <div class="category-title">About Me</div>
+            <span class="type">Your about me description.</span>
+          </div>
+          <div class="basic-infos">
+            <div class="category-title">Member Since</div>
+            <p>Sep 14, 2006</p>
+          </div>
+          <div class="roles">
+            <div class="category-title">Roles</div>
+            <div class="roles-list">
+              <div class="role"><div class="role-color" style="background: rgb(0, 255, 0)"></div>BRAZIL</div>
+              <div class="role"><div class="role-color" style="background: rgb(255, 255, 255)"></div>x64dbg</div>
+              <div class="role"><div class="role-color" style="background: rgb(255, 247, 0)"></div>IDA PRO</div>
+              <div class="role"><div class="role-color" style="background: rgb(0, 121, 186)"></div>ARABIC</div>
+              <div class="role"><div class="role-color" style="background: rgb(228, 29, 185)"></div>re</div>
+              <div class="role"><div class="role-color" style="background: rgb(236, 26, 26)"></div>ADMIN</div>
+            </div>
+          </div>
+
+          <div class="note">
+            <div class="category-title">Note</div>
+            <textarea placeholder="Click for add a note"></textarea>
+          </div>
+
+          <div class="message" onclick="copyToClipboard()">
+            <p class="m">Add on Discord!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-container">
+    <div class="modal"> 
+      <a href="#" target="_blank">nothing here</a>
+    </div>
+  </div>
+
+  <script src="./assets/js/main.js"></script>
+  <script>
+    document.addEventListener('mousemove', (event) => {
+      const cardContainer = document.querySelector('.card-container');
+      const card = document.querySelector('.card');
+
+      // Posição central da tela
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+
+      // Diferença entre a posição do mouse e o centro da tela
+      const offsetX = event.clientX - centerX;
+      const offsetY = event.clientY - centerY;
+
+      // Calcular a rotação e a movimentação leve
+      const rotateX = (offsetY / centerY) * 10; // Rota em torno do eixo X
+      const rotateY = (offsetX / centerX) * -10; // Rota em torno do eixo Y
+
+      // Aplica a rotação ao card
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    // Seleciona o gato
+    const cat = document.getElementById('cat');
+
+    // Mostra o gato na tela
+    cat.style.display = 'block';
+
+    // Adiciona um evento de movimento do mouse
+    document.addEventListener('mousemove', (event) => {
+      // Atualiza a posição do gato para seguir o cursor
+      cat.style.left = event.clientX + 'px';
+      cat.style.top = event.clientY + 'px';
+    });
+
+    function createCrown() {
+      const crown = document.createElement('img');
+      crown.src = './assets/img/crown.png'; // Caminho para a imagem da coroa
+      crown.classList.add('crown');
+
+      // Posição inicial aleatória
+      crown.style.left = Math.random() * 100 + 'vw'; // A posição horizontal varia entre 0 e 100vw
+      crown.style.animationDuration = Math.random() * 3 + 2 + 's'; // Duração entre 2s e 5s
+      crown.style.opacity = Math.random(); // Opacidade aleatória para efeito
+
+      document.body.appendChild(crown);
+
+      // Remove a coroa após a animação
+      crown.addEventListener('animationend', () => {
+        crown.remove();
+      });
+    }
+
+    // Cria uma coroa a cada 500 milissegundos
+    setInterval(createCrown, 500);
+  </script>
+</body>
+</html>
